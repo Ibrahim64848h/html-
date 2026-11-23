@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark light">
+<title>اختبار التشفير | Cryptography MCQ</title>
+<style>
+:root{--b1:#0b1226;--b2:#2b2a7a;--b3:#0e7490;--gl:rgba(255,255,255,.11);--bd:rgba(255,255,255,.22);--tx:#f1f5f9;--mut:#b6c2d4;--ac:#7dd3fc;--ac2:#a78bfa;--ok:#22c55e;--okb:rgba(34,197,94,.3);--bad:#fb7185;--badb:rgba(244,63,94,.28)}
+body.pink{--b1:#ffd6ea;--b2:#ff9fd0;--b3:#fff0f7;--gl:rgba(255,255,255,.5);--bd:rgba(255,255,255,.9);--tx:#7a1850;--mut:#a8457a;--ac:#ff4fa3;--ac2:#ff8fc7;--bad:#e11d62;--badb:rgba(255,90,140,.3)}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;min-height:100%}
+body{font-family:system-ui,-apple-system,"Segoe UI",Tahoma,sans-serif;color:var(--tx);padding:env(safe-area-inset-top,0) 0 env(safe-area-inset-bottom,0);transition:color .3s}
+.bg{position:fixed;inset:0;z-index:-1;background:radial-gradient(60% 40% at 15% 10%,var(--b3),transparent 70%),radial-gradient(50% 40% at 90% 90%,var(--ac2),transparent 70%),linear-gradient(160deg,var(--b1),var(--b2));opacity:1}
+body:not(.pink) .bg{background:radial-gradient(60% 40% at 15% 10%,rgba(14,116,144,.7),transparent 70%),radial-gradient(50% 40% at 90% 90%,rgba(124,58,237,.5),transparent 70%),linear-gradient(160deg,var(--b1),var(--b2))}
+.deco{display:none;position:fixed;inset:0;z-index:-1;pointer-events:none;font-size:34px;opacity:.55}
+body.pink .deco{display:block}
+.deco span{position:absolute}
+.wrap{max-width:720px;margin:0 auto;padding:14px 14px 30px}
+.glass{background:var(--gl);border:1px solid var(--bd);border-radius:22px;-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);box-shadow:0 8px 28px rgba(0,0,0,.18),inset 0 1px 0 rgba(255,255,255,.35)}
+body.pink .glass{box-shadow:0 8px 24px rgba(255,79,163,.25),inset 0 1px 0 #fff}
+.top{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 14px;margin-bottom:14px}
+.by{font-weight:800;letter-spacing:.3px;direction:ltr}
+button{font:inherit;color:inherit;cursor:pointer;border:0}
+.tg{padding:9px 14px;border-radius:14px;background:linear-gradient(135deg,var(--ac),var(--ac2));color:#fff;font-weight:700;box-shadow:0 4px 14px rgba(0,0,0,.2)}
+.tg:active,.btn:active{transform:scale(.97)}
+.card{padding:20px 16px}
+.hero{text-align:center;padding:34px 18px}
+.hero h1{margin:6px 0;font-size:clamp(24px,6vw,34px)}
+.hero p{color:var(--mut);line-height:1.8;margin:8px 0 20px}
+.kit{font-size:54px}
+.btn{display:inline-block;padding:13px 28px;border-radius:16px;background:linear-gradient(135deg,var(--ac),var(--ac2));color:#fff;font-weight:800;font-size:17px;box-shadow:0 6px 18px rgba(0,0,0,.22)}
+.meta{display:flex;justify-content:space-between;color:var(--mut);font-size:14px;margin-bottom:8px;direction:ltr}
+.bar{height:8px;border-radius:8px;background:rgba(255,255,255,.18);overflow:hidden;margin-bottom:16px}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--ac),var(--ac2));border-radius:8px;transition:width .3s}
+.q{direction:ltr;text-align:left;font-size:clamp(17px,4.4vw,21px);font-weight:700;line-height:1.55;margin:0 0 16px}
+.opts{display:grid;gap:11px}
+.opt{position:relative;direction:ltr;text-align:left;padding:14px 16px;border-radius:16px;background:var(--gl);border:1px solid var(--bd);font-size:16px;line-height:1.45;transition:background .2s,border-color .2s,transform .15s;word-break:break-word}
+.opt:active{transform:scale(.985)}
+.opt.ok{background:var(--okb);border-color:var(--ok)}
+.opt.bad{background:var(--badb);border-color:var(--bad)}
+body.pink .opt.ok{background:#fff;border:2px solid var(--ac);color:#c2185b;font-weight:700;box-shadow:0 0 0 4px rgba(255,79,163,.18),0 6px 16px rgba(255,79,163,.3)}
+.bow{display:none;position:absolute;top:-14px;left:-6px;width:46px;transform:rotate(-14deg);filter:drop-shadow(0 2px 3px rgba(255,79,163,.4))}
+body.pink .opt.ok .bow{display:block}
+.nx{margin-top:16px;text-align:center;min-height:50px}
+.stat{display:flex;gap:10px;justify-content:center;margin:14px 0}
+.stat div{flex:1;padding:12px;border-radius:16px;background:var(--gl);border:1px solid var(--bd)}
+.stat b{display:block;font-size:26px}
+.big{font-size:60px;font-weight:800;text-align:center;background:linear-gradient(135deg,var(--ac),var(--ac2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.rv{margin-top:16px;padding:14px;border-radius:16px;background:var(--gl);border:1px solid var(--bd);direction:ltr;text-align:left}
+.rv p{margin:0 0 8px;font-weight:700;line-height:1.5}
+.rv .w{color:var(--bad)}.rv .c{color:#22c55e;font-weight:700}
+body.pink .rv .c{color:#c2185b}
+h3{margin:22px 0 6px;text-align:center}
+.foot{text-align:center;margin-top:22px;font-weight:800;direction:ltr;color:var(--mut)}
+</style>
+</head>
+<body>
+<div class="bg"></div>
+<div class="deco"><span style="top:12%;left:6%">🎀</span><span style="top:30%;right:8%">🐱</span><span style="top:58%;left:10%">💖</span><span style="top:78%;right:12%">🎀</span><span style="top:90%;left:40%">🐱</span></div>
+<div class="wrap">
+  <div class="glass top"><span class="by">By @t5qtt</span><button class="tg" id="tg">حول الثيم ☺️</button></div>
+  <div id="app"></div>
+  <div class="foot">by t5qtt</div>
+</div>
+<script>
+var RAW=`Securing communications by transforming information into coded formats using mathematical algorithms and secret keys|Breaking ciphers without any key|Storing passwords as plain text|Compressing data to save storage space
+The original message that is intended to be kept secret is called:|Plaintext|Protocol|Key|Ciphertext
+The encrypted message produced after applying a cipher is called:|Ciphertext|Plaintext|Key space|Cryptosystem
+A secret value used to encrypt or decrypt messages is the:|Key|Interceptor|Plaintext|Protocol
+Encryption is:|Transforming plaintext into ciphertext using a cipher and a key|Trying all possible keys|Studying techniques to weaken systems|Transforming ciphertext back into plaintext
+Decryption is:|Transforming ciphertext back into plaintext using a cipher and a key|A set of rules to secure communication|Transforming plaintext into ciphertext|Breaking a cipher by social engineering
+A cryptosystem is:|The combination of a cipher, key, and related algorithms or protocols used to secure data|A type of attack|Only the secret key|Only the ciphertext
+Cryptanalysis is:|The study of techniques used to break or weaken cryptographic systems|Hiding data inside images|The process of encrypting plaintext|Securely distributing keys
+A brute force attack is a technique where:|All possible keys are tried to decrypt a message|The attacker deceives people to get the key|Power consumption of a processor is measured|Letter frequencies are counted
+A protocol in cryptography is:|A set of rules and procedures used to secure communication between two or more parties|A type of brute force attack|A secret key|The original message
+Which of the following is NOT one of the roles of cryptography in cybersecurity listed in the lecture?|Increasing network bandwidth|Authentication|Confidentiality|Integrity
+Ensuring that data is not tampered with or modified in transit is:|Integrity|Availability of keys|Confidentiality|Non-repudiation
+Ensuring that parties cannot deny their involvement in an exchange or transaction is:|Non-repudiation|Integrity|Authentication|Confidentiality
+Establishing the identity of the communicating parties is:|Authentication|Encryption|Brute force|Non-repudiation
+Cryptology is divided into two branches:|Cryptography and cryptanalysis|Encryption and decryption|Stream and block ciphers|Symmetric and asymmetric ciphers
+According to the lecture’s diagram, cryptography includes:|Symmetric ciphers, asymmetric ciphers, and protocols|Brute force, implementation attacks, and social engineering|Shift, affine, and Vigenère only|Plaintext, ciphertext, and keys only
+A symmetric cipher uses:|The same secret key for encryption and decryption|A public key for encryption and a private key for decryption|No key at all|A different random key for every letter
+The critical challenge of symmetric ciphers is:|Key management|Very slow speed|Ciphertext that is longer than plaintext|Inability to encrypt large data
+Asymmetric ciphers are also known as:|Public-key cryptography|Transposition ciphers|Classical cryptography|Secret-key cryptography
+The main advantage of asymmetric ciphers mentioned in the lecture is:|Secure communication without needing to preshare a secret key|They need no mathematics|They are faster than symmetric ciphers|They use only one key
+In the equation y = e_k(x), the symbol y represents:|Ciphertext|Plaintext|Key|Key space
+The set of all possible keys is called the:|Key space|Cryptosystem|Ciphertext|Protocol
+Encryption and decryption are inverse operations when the same key k is used, so:|d_k(e_k(x)) = x|d_k(e_k(x)) = y|d_k(x) = e_k(k)|e_k(d_k(x)) = k
+A strong symmetric cipher makes the ciphertext look like:|Random bits|Readable text|A repeating pattern|The plaintext reversed
+In the lecture’s model, Oscar represents:|The attacker (bad guy) who eavesdrops on the channel|The receiver|The sender|The key generator
+In a substitution cipher, the key is:|The substitution table|The number of words|The length of the message|The first letter of the plaintext
+The number of possible substitution tables (keys) for the 26-letter alphabet is about:|26! ≈ 2^88|2^26 keys|26 keys|26^2 keys
+Does the infeasibility of a brute-force attack imply that the substitution cipher is secure?|No, security must be evaluated against all possible attacks|Yes, because letter frequency is hidden|Yes, because the key space is large|Yes, if the key is short
+Letter frequency analysis works on the substitution cipher because:|Each plaintext letter always maps to the same ciphertext letter, preserving statistics|The key is very short|Ciphertext is always shorter|The cipher uses many alphabets
+The most common letter in English text (nearly 13%) is:|E|T|A|Z
+Extracting a key by measuring a processor’s power consumption during cryptographic operations is an example of:|An implementation attack (side-channel analysis)|A social engineering attack|A brute-force attack|A frequency analysis attack
+Bribery, blackmail, and deception to obtain secret keys are examples of:|Social engineering attacks|Brute-force attacks|Implementation attacks|Mathematical analysis
+Kerckhoffs’s Principle states that a cryptosystem should be secure even if:|The attacker knows all details about the system except the secret key|The ciphertext is not sent|The algorithm is kept secret|The attacker knows the key
+The feasibility of a brute-force attack on a symmetric cipher depends mainly on:|The size of the key space|The color of the channel|The length of the plaintext only|The number of senders
+Classical cryptography consists of which two types of ciphers?|Transposition and substitution|Symmetric and asymmetric|Stream and block|Public and private
+Modern symmetric cryptography consists of:|Stream ciphers and block ciphers|Caesar and Vigenère ciphers|Transposition and substitution ciphers|Monoalphabetic and polyalphabetic ciphers
+Substitution ciphers are classified into:|Monoalphabetic, polyalphabetic, and polygraphic|Additive, social, and brute-force|Public, private, and shared|Stream, block, and hash
+In a monoalphabetic cipher, the relationship between a plaintext character and a ciphertext character is:|One-to-one|Many-to-many|Random each time|One-to-many
+In a polyalphabetic cipher, the relationship between a plaintext character and ciphertext characters is:|One-to-many|Always identical|One-to-one|None
+Which of these are monoalphabetic ciphers?|Additive, Caesar, and Affine|Vigenère only|Stream and block|Playfair and Vigenère
+Which cipher is polyalphabetic?|Vigenère|ROT13|Affine|Caesar
+Compared with monoalphabetic ciphers, polyalphabetic ciphers are:|Stronger|Weaker|Not ciphers|Exactly equal in strength
+Julius Caesar historically used a shift of:|3 positions|13 positions|26 positions|5 positions
+The Caesar (shift) cipher is a special case of the:|Substitution cipher|Transposition cipher|Stream cipher|Asymmetric cipher
+The encryption formula of the shift cipher is:|c = (p + k) mod 26|c = (p × k) mod 26|c = p + 26|c = (p − k) mod 26
+The decryption formula of the shift cipher is:|p = (c − k) mod 26|p = c mod k|p = (c + k) mod 26|p = (c × k) mod 26
+Encrypting “brutus” with the Caesar cipher (k = 3) gives:|EUXWXV|EUXWXU|FVYXYW|DTWVWU
+Decrypting “EUXWXV” with the Caesar cipher (k = 3) gives:|brutus|brutes|caesar|bruins
+The number of possible keys in the shift cipher is:|26|25!|2^88|13
+In the shift cipher, plaintext letters, ciphertext letters, and the key are elements of:|Z26|Z25|Z100|Z13
+With a shift of 3, the letter X becomes:|A|W|Z|B
+ROT13 applied to HELLO gives:|URYYB|IFMMP|KHOOR|HELLO
+The encryption function of the Affine cipher is:|e_k(x) = (k1·x + k2) mod 26|e_k(x) = (x + k) mod 26|e_k(x) = x^k mod 26|e_k(x) = (k1 + k2) mod x
+The decryption function of the Affine cipher is:|d_k(y) = k1⁻¹ · (y − k2) mod 26|d_k(y) = k1 · (y + k2) mod 26|d_k(y) = (y + k2) mod 26|d_k(y) = (y − k1) mod k2
+The restriction on k1 in the Affine cipher is:|gcd(k1, 26) = 1|k1 = 13|k1 must be even|k1 = 26
+In the Affine cipher, if k1 = 3 then its inverse k1⁻¹ equals:|9|15|21|3
+In the Affine cipher, if k1 = 5 then its inverse k1⁻¹ equals:|21|9|5|19
+Encrypting “COMPUTER” with the Affine cipher (k1 = 5, k2 = 4) gives:|owmbavyl|dwmbavyl|owmbaxyl|pwmbavyl
+A polyalphabetic cipher:|Uses multiple substitution alphabets to encode the plaintext|Does not use a key|Uses only one fixed alphabet|Substitutes pairs of letters only
+The Vigenère cipher was invented by Giovan Battista Bellaso but is named after:|Blaise de Vigenère|Charles Wheatstone|Friedrich Kasiski|Julius Caesar
+The Vigenère cipher is built from:|26 Caesar ciphers with shifts from 0 to 25|A 5×5 key square|Two Affine keys|One Caesar cipher only
+The Vigenère encryption equation is:|c_i = (p_i + k_i) mod 26|c_i = (p_i × k_i) mod 26|c_i = (p_i − k_i) mod 26|c_i = (p_i + k_i) mod 25
+The Vigenère decryption equation is:|p_i = (c_i − k_i) mod 26|p_i = (c_i + k_i) mod 26|p_i = (c_i × k_i) mod 26|p_i = (k_i − c_i) mod 25
+In the Vigenère cipher, the key typically consists of:|A repeating keyword that matches the message length|A random table of 26! entries|A 5×5 grid|A single number
+Encrypting HELLOWORLD with the Vigenère cipher using the key KEY gives:|RIJVSUYVJN|HELLOWORLD|RJIVSUYVJN|RIJVSUYVJM
+A key strength of the Vigenère cipher is that:|Each plaintext letter can map to several ciphertext letters, hiding letter frequency|It encrypts pairs of letters|It has only 26 keys|Its key is public
+Encrypting “wearediscoveredsaveyourself” with the key “deceptive” gives a ciphertext that starts with:|ZICVT|WEARE|ZICVS|DECEP
+The Kasiski examination was developed by:|Friedrich Kasiski in 1863|Julius Caesar in 50 BC|Charles Wheatstone in 1854|Alan Turing in 1943
+The Kasiski method is used to find:|The key length of a polyalphabetic cipher such as Vigenère|The Playfair key square|The Affine inverse|The key length of a Caesar cipher
+In the Kasiski method, the distance between two identical repeated ciphertext sequences must be a multiple of:|The key length|26|The message length|The number of words
+The distances between repeated sequences are 9 and 15. Their GCD, which gives the key length, is:|3|9|5|15
+Polygraphic ciphers:|Substitute multiple letters or symbols at once|Only rearrange letters|Substitute one letter at a time|Use one shift for all letters
+The Playfair cipher encrypts:|Pairs of letters (digraphs)|Single letters|Whole words|Triples of letters
+The Playfair cipher was invented in 1854 by:|Charles Wheatstone|Blaise de Vigenère|Friedrich Kasiski|Lord Playfair
+The Playfair key square has the size:|5×5|4×4|6×6|26×26
+In Playfair, which letter is typically omitted (replaced by another) so the alphabet fits 25 cells?|J (replaced by I)|Z (replaced by S)|Q (replaced by K)|E (replaced by A)
+With the key “Monarchy”, the first row of the Playfair key square is:|M O N A R|C H Y B D|A B C D E|M O N R A
+If a Playfair digraph has two identical letters (e.g., “hello”), the pairs become:|he, lx, lo|he, ll, o|he, ll, oz|hel, lo
+Playfair encryption rule: if both letters are in the same row, take:|The letter immediately to the right of each (wrap around)|The opposite rectangle corners|The letter immediately to the left of each|The letter below each
+Playfair encryption rule: if both letters are in the same column, take:|The letter immediately below each (wrap to the top)|The opposite rectangle corners|The letter to the right of each|The letter immediately above each
+Playfair encryption rule: if the letters are in different rows and columns, take:|The letters at the horizontally opposite corners of the rectangle|The letters directly below each|The same letters unchanged|The letters to the right of each
+Using the key “Monarchy”, the Playfair digraph “me” is encrypted to:|cl|rq|ga|tl
+Using the key “Monarchy”, the Playfair plaintext “instrumentsz” is encrypted to:|gatlmzclrqtx|gatlmzclrqtz|gatmlzclrqtx|instrumentsz
+Playfair decryption rule: if both letters are in the same row, take:|The letter immediately to the left of each (wrap to the right end)|The letter above each|The opposite rectangle corners|The letter immediately to the right of each
+Using the key “Monarchy”, the Playfair ciphertext digraph “cl” is decrypted to:|me|in|st|nt`;
+var Q=RAW.split("\n").map(function(l){var p=l.split("|");return{q:p[0],c:p[1],o:p.slice(1)}});
+var app=document.getElementById("app"),order,i,score,wrong,locked;
+var BOW='<svg class="bow" viewBox="0 0 64 40"><path d="M32 20C22 2 3 4 4 18s18 17 28 2z" fill="#ff4fa3"/><path d="M32 20c10-18 29-16 28-2s-18 17-28 2z" fill="#ff4fa3"/><circle cx="32" cy="20" r="6.5" fill="#ff1f8e"/><circle cx="30" cy="18" r="2" fill="#fff" opacity=".7"/></svg>';
+function sh(a){a=a.slice();for(var j=a.length-1;j>0;j--){var k=Math.floor(Math.random()*(j+1)),t=a[j];a[j]=a[k];a[k]=t}return a}
+function esc(s){return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")}
+function home(){var pk=document.body.classList.contains("pink");
+app.innerHTML='<div class="glass hero"><div class="kit">'+(pk?"🎀🐱":"🔐")+'</div><h1>اختبار التشفير</h1><p>'+Q.length+' سؤال MCQ من المحاضرات 1 - 2 - 3<br>الأسئلة تطلع عشوائي، والصح يتلون أخضر، والأخطاء تطلعلك بالآخر.</p><button class="btn" id="go">ابدأ الاختبار</button></div>';
+document.getElementById("go").onclick=start}
+function start(){order=sh(Q.map(function(_,n){return n}));i=0;score=0;wrong=[];show()}
+function show(){locked=false;var d=Q[order[i]],opts=sh(d.o);
+var h='<div class="glass card"><div class="meta"><span>'+(i+1)+' / '+Q.length+'</span><span>Score: '+score+'</span></div><div class="bar"><i style="width:'+(i/Q.length*100)+'%"></i></div><p class="q">'+esc(d.q)+'</p><div class="opts">';
+opts.forEach(function(o){h+='<button class="opt" data-v="'+esc(o).replace(/"/g,"&quot;")+'">'+BOW+esc(o)+'</button>'});
+app.innerHTML=h+'</div><div class="nx" id="nx"></div></div>';
+var bs=app.querySelectorAll(".opt");
+bs.forEach(function(b){b.onclick=function(){if(locked)return;locked=true;var v=b.getAttribute("data-v"),ok=v===d.c;
+bs.forEach(function(x){if(x.getAttribute("data-v")===d.c)x.classList.add("ok")});
+if(ok)score++;else{b.classList.add("bad");wrong.push({q:d.q,p:v,c:d.c})}
+var n=document.getElementById("nx");n.innerHTML='<button class="btn" id="nb">'+(i+1<Q.length?"التالي ←":"شوف النتيجة")+'</button>';
+document.getElementById("nb").onclick=function(){i++;i<Q.length?show():end()}}})}
+function end(){var pc=Math.round(score/Q.length*100),pk=document.body.classList.contains("pink");
+var h='<div class="glass card"><div class="big">'+pc+'%</div><div style="text-align:center;font-weight:700">'+(pc>=85?"ممتاز! "+(pk?"🎀":"🏆"):pc>=60?"زين، كمل مراجعة 👍":"تحتاج مراجعة أكثر 💪")+'</div><div class="stat"><div><b style="color:#22c55e">'+score+'</b>صحيحة</div><div><b style="color:var(--bad)">'+wrong.length+'</b>خاطئة</div></div>';
+if(wrong.length){h+='<h3>الأسئلة الغلط</h3>';wrong.forEach(function(w){h+='<div class="rv"><p>'+esc(w.q)+'</p><div class="w">✗ '+esc(w.p)+'</div><div class="c">✓ '+esc(w.c)+'</div></div>'})}
+h+='<div style="text-align:center;margin-top:20px"><button class="btn" id="rs">إعادة الاختبار</button></div></div>';
+app.innerHTML=h;document.getElementById("rs").onclick=start;window.scrollTo(0,0)}
+document.getElementById("tg").onclick=function(){var p=document.body.classList.toggle("pink");try{localStorage.setItem("th",p?"1":"0")}catch(e){}
+if(!order||!app.querySelector(".card"))home()};
+try{if(localStorage.getItem("th")==="1")document.body.classList.add("pink")}catch(e){}
+home();
+</script>
+</body>
+</html>
